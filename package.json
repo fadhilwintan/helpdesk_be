@@ -1,0 +1,16 @@
+{
+  "name": "helpdesk_backend",
+  "version": "1.0.0",
+  "description": "helpdesk FIK UPNVJ",
+  "main": "app.js",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "fadhilwintan",
+  "license": "ISC"
+}
