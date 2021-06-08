@@ -16,13 +16,14 @@ exports.readQuestion = function(req, res) {
 }
 
 exports.createQuestion = function(req, res) {
+    var nim = req.body.nim
     var name = req.body.name
     var email = req.body.email
     var title = req.body.title
     var category = req.body.category
     var priority = req.body.priority
     var question = req.body.question
-    var query = `insert into question (name, email, title, category, priority, question) values ('${name}', '${email}', '${title}', '${category}', '${priority}', '${question}');`
+    var query = `insert into question (nim, name, email, title, category, priority, question) values ('${nim}', '${name}', '${email}', '${title}', '${category}', '${priority}', '${question}');`
     connection.query(query, (err, results) => {
         if(err){
             throw err

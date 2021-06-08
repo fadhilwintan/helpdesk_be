@@ -14,12 +14,13 @@ client.connect((err)=> {
         throw err
     }
     let createQuestionTable = `CREATE TABLE IF NOT EXIST QUESTION(id_question SERIAL NOT NULL PRIMARY KEY,
-        name varchar(100) not null,
-        email varchar(100) not null,
-        title varchar(150) not null,
-        category varchar(100) not null,
-        priority varchar (30) not null,
-        question varchar(200) not null);`;
+        nim int(10) NOT NULL FOREIGN KEY,
+        name varchar(100) NOT NULL,
+        email varchar(100) NOT NULL,
+        title varchar(150) NOT NULL,
+        category varchar(100) NOT NULL,
+        priority varchar (30) NOT NULL,
+        question varchar(200) NOT NULL);`;
     
     client.query(createQuestionTable, (err, result, fields) => {
         if (err) {
@@ -39,8 +40,8 @@ client.connect((err)=> {
                 var users = JSON.parse(string);
 
                 if (users.rowCount === 0) {
-                    let createQuestion = `INSERT INTO QUESTION(name, email, title, category, priority, question)
-                    VALUES ('fadhil', 'fadhil@email,com', 'mahasiswa', 'rendah', 'apa kabar?');`;
+                    let createQuestion = `INSERT INTO QUESTION(nim, name, email, title, category, priority, question)
+                    VALUES ('181050107', 'fadhil', 'fadhil@email,com', 'mahasiswa', 'rendah', 'apa kabar?');`;
                     client.query(createQuestion, function (error, result) {
                         if (error) {
                             console.log(error);
