@@ -17,7 +17,7 @@ exports.readAnswer = function(req, res) {
 
 exports.createAnswer = function(req, res) {
     var answer = req.body.answer
-    var query = `insert into answer (answer) values ('${answer}');`
+    var query = ` insert into answer (answer) values ('${answer}');`
     connection.query(query, (err, results) => {
         if(err){
             throw err
