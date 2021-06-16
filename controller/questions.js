@@ -8,7 +8,7 @@ exports.readQuestion = function(req, res) {
         }
         else{
             res.send({
-                message: 'success',
+                message: 'success brow',
                 data: results.rows
             })
         }

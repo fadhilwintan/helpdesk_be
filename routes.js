@@ -1,6 +1,8 @@
 module.exports = (app) => {
     var question = require('./controller/questions')
-    var answer = require('/controller/answers')
+    var answer = require('./controller/answers')
+    var user = require('./controller/Users')
+    var admin = require('./controller/admins')
 
     app.get('/api', async (req,res) => {
         res.json ({
@@ -16,4 +18,10 @@ module.exports = (app) => {
         .get(answer.readAnswer)
     app.route('/api/create-answer')
         .post(answer.createAnswer)
+    app.route('/api/user')
+        .get(user.readUser)
+    app.route('/api/user')
+        .post(user.registerUser)
+    app.route('/api/admin')
+        .post(admin.registerAdmin)
 }
