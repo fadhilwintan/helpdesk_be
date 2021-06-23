@@ -50,6 +50,8 @@ exports.login = function (req, res, next) {
         }
         else{
             var passwordIsValid = bcrypt.compareSync(password, userDetails[0].password);
+            console.log(bcrypt.hashSync(password))
+            console.log(userDetails[0].password)
             if(!passwordIsValid){
                 res.send({
                     auth: false,
@@ -74,6 +76,7 @@ exports.login = function (req, res, next) {
                     token: token,
                     refreshToken: refreshToken,
                     status: "success",
+                    role:userDetails[0].role,
                     username:userDetails[0].username,
                     id_user:userDetails[0].id_user
                 });

@@ -1,8 +1,8 @@
 module.exports = (app) => {
-    var question = require('./controller/questions')
-    var answer = require('./controller/answers')
+    var question = require('./controller/discussions')
     var user = require('./controller/Users')
-    var admin = require('./controller/admins')
+    var detailUser = require('./controller/detailUser')
+    var authentication = require('./controller/authentication')
 
     app.get('/api', async (req,res) => {
         res.json ({
@@ -10,18 +10,19 @@ module.exports = (app) => {
         })
     })
 
-    app.route('/api/question')
-        .get(question.readQuestion)
-    app.route('/api/create-question')
-        .post(question.createQuestion)
-    app.route('/api/answer')
-        .get(answer.readAnswer)
-    app.route('/api/create-answer')
-        .post(answer.createAnswer)
+    app.route('/api/discussions')
+        .get(question.readDiscussion)
+    app.route('/api/create-discussions')
+        .post(question.createDiscussion)
     app.route('/api/user')
         .get(user.readUser)
-    app.route('/api/user')
+    app.route('/api/create-user')
         .post(user.registerUser)
-    app.route('/api/admin')
-        .post(admin.registerAdmin)
+    app.route('/api/profile/:username')
+        .post(detailUser.detailUser)
+    app.route('/api/login')
+        .post(authentication.login)
+    app.route('/api/logout')
+        .post(authentication.logout)
+
 }

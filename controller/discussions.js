@@ -1,21 +1,21 @@
 var connection = require('../connection')
 
-exports.readQuestion = function(req, res) {
-    var query = 'select * from question;'
+exports.readDiscussion = function(req, res) {
+    var query = 'select * from discussion;'
     connection.query(query, (err, results) => {
         if(err){
             throw err
         }
         else{
             res.send({
-                message: 'success brow',
+                message: 'success',
                 data: results.rows
             })
         }
     })
 }
 
-exports.createQuestion = function(req, res) {
+exports.createDiscussion = function(req, res) {
     var nim = req.body.nim
     var name = req.body.name
     var email = req.body.email
@@ -23,14 +23,15 @@ exports.createQuestion = function(req, res) {
     var category = req.body.category
     var priority = req.body.priority
     var question = req.body.question
-    var query = `insert into question (nim, name, email, title, category, priority, question) values ('${nim}', '${name}', '${email}', '${title}', '${category}', '${priority}', '${question}');`
+    var answer = req.body.answer
+    var query = `insert into discussion (nim, name, email, title, category, priority, question, answer) values ('${nim}', '${name}', '${email}', '${title}', '${category}', '${priority}', '${question}', '${answer}');`
     connection.query(query, (err, results) => {
         if(err){
             throw err
         }
         else{
             res.send({
-                message: 'New Question successfully posted'
+                message: 'New Discussion successfully posted'
             })
         }
     })
