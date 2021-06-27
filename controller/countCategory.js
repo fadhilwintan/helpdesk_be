@@ -1,15 +1,14 @@
 var connection = require('../connection')
 
-exports.detailUser = function(req, res) {
-    var uname = req.params.uname
-    var query = `select * from users where username = '${uname}'`
+exports.countCategory = function(req, res) {
+    var query = `select category, COUNT(category) from discussion group by category;`
     connection.query(query, (err, results) => {
-        if(err) {
+        if(err){
             throw err
         }
         else{
             res.send({
-                message: "success",
+                message: 'success',
                 data: results.rows
             })
         }
